@@ -23,14 +23,17 @@ export default function Main() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div>
-      {blogs.map((blog) => (
-        <BlogCard key={blog.id}
-          title={blog.title}
-          subtitle={blog.subtitle}
-          text={blog.text} 
-          image={blog.image} />
-      ))}
-    </div>
+    <>
+      <p>{errorMessage}</p>
+      <div>
+        {blogs.map((blog) => (
+          <BlogCard key={blog.id}
+            title={blog.title}
+            subtitle={blog.subtitle}
+            text={blog.text} 
+            image={blog.image} />
+        ))}
+      </div>
+    </>
   );
 }
