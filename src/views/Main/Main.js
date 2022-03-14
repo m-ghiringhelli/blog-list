@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { fetchBlogs } from '../../services/blogs'; 
+import BlogCard from '../../components/BlogCard/BlogCard';
+import { fetchBlogs } from '../../services/blogs';
 
 export default function Main() {
   const [blogs, setBlogs] = useState([]);
@@ -19,7 +20,17 @@ export default function Main() {
     fetchData();
   }, []);
 
+  if (loading) return <div>Loading...</div>;
+
   return (
-    <div>Main</div>
+    <div>
+      {blogs.map((blog) => (
+        <BlogCard key={blog.id}
+          title={blog.title}
+          subtitle={blog.subtitle}
+          text={blog.text} 
+          image={blog.image} />
+      ))}
+    </div>
   );
 }
